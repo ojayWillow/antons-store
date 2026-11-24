@@ -19,3 +19,7 @@ A clickable mockup of a small perfume e-shop (19 scents), made to show the clien
 ## Tech
 
 One static `index.html` (HTML, CSS, vanilla JS). No build step. Deployed on Vercel.
+
+## Product photos
+
+Every scent has a framed photo box (shop list, cards, colour bands, product page). Add `images/01.jpg` … `images/19.jpg` (4:5, 1200 × 1500) and they replace the drawn bottles automatically. See `images/README.md`.
