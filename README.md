@@ -9,12 +9,16 @@ A clickable mockup of a small perfume e-shop (19 scents), made to show the clien
 3. **Product page**: notes (top / heart / base), choose 50 or 100 ml, choose quantity, add to bag, express pay, "try it first" 2 ml sample.
 4. **Bag**: change quantities, free-delivery progress bar, checkout.
 5. **Checkout**: 1 Details (guest, free sample pick) → 2 Delivery → 3 Payment.
-6. **Order confirmation**: order number, summary, what happens next.
+6. **Payment screen** (demo of the provider's page): card with 3-D Secure, Apple Pay, PayPal or bank link → processing → payment successful. Express Apple Pay / PayPal on the product page and bag skip the checkout form.
+7. **Order confirmation**: order number, summary, what happens next.
+
+Extras: **scent finder quiz** (3 questions → 2 suggestions → add both as samples) and **gift wrap + handwritten card** at checkout.
 
 ## Controls at the bottom of the page
 
 - **A / B / C**: three design directions for the same store (A Index, B Motion, C Colour). Link straight to one with `#a`, `#b` or `#c`.
 - **Notes**: shows or hides the yellow explainer notes that describe each step for the client.
+- **+ Comment**: click anywhere on the page to pin feedback from the client. **List** shows all comments and copies them as text. Comments are saved in that browser only.
 
 ## Tech
 

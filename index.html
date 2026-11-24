@@ -328,6 +328,89 @@ details.acc p{margin:0 0 16px;color:var(--muted);font-size:17px}
 .switch .sep{width:1px;height:22px;background:rgba(255,255,255,.2);margin:0 4px}
 @media (max-width:560px){.switch .lab{display:none}.switch button{padding:9px 11px}.switch .long{display:none}}
 
+/* ===== Payment provider screen (demo) ===== */
+.payov{position:fixed;inset:0;z-index:120;background:rgba(18,18,22,.55);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));overflow-y:auto}
+.payov.on{display:flex}
+.psheet{width:min(440px,100%);background:#fff;color:#1a1f36;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.35);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:1.4;overflow:hidden}
+.psheet .ptop{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid #e6e8ee;font-size:13px;color:#697386}
+.psheet .ptop button{color:#697386;font-size:13px}
+.psheet .pbody{padding:22px 22px 24px;display:flex;flex-direction:column;gap:14px}
+.psheet .merch{display:flex;align-items:center;gap:12px}
+.psheet .merch i{width:40px;height:40px;border-radius:8px;background:#141414;color:#efe9df;display:grid;place-items:center;font-family:var(--serif);font-style:normal;font-size:20px}
+.psheet .amt{font-size:30px;font-weight:600;letter-spacing:-.01em}
+.psheet label{font-size:13px;color:#4f566b;display:block;margin-bottom:5px}
+.psheet input,.psheet select{width:100%;font:inherit;font-size:16px;padding:11px 12px;border:1px solid #d5d9e2;border-radius:8px;background:#fff;color:#1a1f36}
+.psheet .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.psheet .pbtn{width:100%;padding:13px;border-radius:8px;background:#635bff;color:#fff;font-weight:600;font-size:16px}
+.psheet .pbtn.black{background:#000}
+.psheet .pbtn.pp{background:#ffc439;color:#111}
+.psheet .pbtn.bank{background:#1a1f36}
+.psheet .lock{font-size:12px;color:#697386;text-align:center}
+.psheet .demo{background:#fff4c9;color:#2b2517;border:1px solid #e3cf7d;padding:8px 10px;border-radius:6px;font-family:var(--mono);font-size:11px;line-height:1.5}
+.psheet .banks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.psheet .banks button{border:1px solid #d5d9e2;border-radius:8px;padding:14px 10px;font-weight:600}
+.psheet .banks button[aria-pressed="true"]{border-color:#1a1f36;box-shadow:inset 0 0 0 1px #1a1f36}
+.psheet .center{text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;padding:18px 0}
+.spin{width:44px;height:44px;border-radius:50%;border:3px solid #e6e8ee;border-top-color:#635bff;animation:sp 0.8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.okc{width:56px;height:56px;border-radius:50%;background:#1aae6f;color:#fff;display:grid;place-items:center;font-size:28px;animation:pop .35s ease}
+@keyframes pop{from{transform:scale(.4);opacity:0}}
+.psheet .apple{background:#f5f5f7}
+.psheet .faceid{width:64px;height:64px;border:3px solid #000;border-radius:16px;display:grid;place-items:center;font-size:26px}
+.psheet .ppbar{background:#003087;color:#fff;padding:16px 22px;font-weight:700;font-size:20px;font-style:italic}
+
+/* ===== Gift option ===== */
+.gift{margin-top:18px;border:1px solid var(--line);background:var(--panel);padding:14px 16px}
+.gift textarea{width:100%;margin-top:10px;font:inherit;font-size:17px;padding:10px 12px;border:1px solid var(--line);background:var(--bg);color:var(--fg);min-height:80px;resize:vertical}
+
+/* ===== Scent finder quiz ===== */
+.quiz{position:fixed;inset:0;z-index:110;background:rgba(10,9,8,.5);display:none;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
+.quiz.on{display:flex}
+.qbox{width:min(640px,100%);background:var(--panel);color:var(--fg);border:1px solid var(--fg);padding:28px;position:relative}
+.qbox h2{font-weight:400;font-size:clamp(30px,4vw,44px);line-height:1.05;margin:8px 0 18px}
+.qbox .qx{position:absolute;right:16px;top:14px}
+.qopts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.qopts button{border:1px solid var(--line);padding:16px;text-align:left;background:var(--bg)}
+.qopts button:hover{border-color:var(--fg)}
+.qopts b{display:block;font-weight:400;font-size:22px}
+.qopts span{color:var(--muted);font-size:15px}
+.qres{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.qres button{text-align:left;display:flex;flex-direction:column;gap:8px}
+.qres b{font-weight:400;font-size:22px}
+.qdots{display:flex;gap:6px}
+.qdots i{width:22px;height:3px;background:var(--line)}
+.qdots i.on{background:var(--fg)}
+@media (max-width:520px){.qopts{grid-template-columns:1fr}.qbox{padding:22px 18px}}
+
+/* ===== Client comments (pin anywhere) ===== */
+:root[data-cmode="on"] body{cursor:crosshair}
+.cbar{position:fixed;left:50%;top:calc(12px + env(safe-area-inset-top,0px));transform:translateX(-50%);z-index:100;background:#e8452c;color:#fff;font-family:var(--mono);font-size:12px;padding:8px 14px;border-radius:14px;display:none;max-width:calc(100% - 24px);text-align:center}
+:root[data-cmode="on"] .cbar{display:block}
+.pin{position:absolute;z-index:96;width:30px;height:30px;margin:-30px 0 0 -2px;border-radius:50% 50% 50% 2px;background:#e8452c;color:#fff;font-family:var(--mono);font-size:12px;display:grid;place-items:center;box-shadow:0 4px 12px rgba(0,0,0,.25);cursor:pointer}
+.pin:hover{transform:scale(1.1)}
+.cpop{position:absolute;z-index:105;width:min(300px,calc(100vw - 32px));background:#fff;color:#1a1a1a;border:1px solid #e8452c;box-shadow:0 12px 30px rgba(0,0,0,.2);padding:12px;font-family:var(--mono);font-size:12px;display:flex;flex-direction:column;gap:8px}
+.cpop textarea{width:100%;min-height:80px;font:inherit;font-size:13px;padding:8px;border:1px solid #ccc;resize:vertical;color:#1a1a1a;background:#fff}
+.cpop .row2{display:flex;justify-content:space-between;gap:8px}
+.cpop button{padding:7px 10px;border:1px solid #1a1a1a;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.cpop button.pri{background:#1a1a1a;color:#fff}
+.cpop button.del{border-color:#e8452c;color:#e8452c}
+.cpanel{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);z-index:115;background:#fff;color:#1a1a1a;box-shadow:-10px 0 40px rgba(0,0,0,.2);transform:translateX(102%);transition:transform .35s ease;display:flex;flex-direction:column;font-family:var(--mono);font-size:12px;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.cpanel.on{transform:none}
+.cpanel .top{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid #eee;text-transform:uppercase;letter-spacing:.06em}
+.cpanel .list{flex:1;overflow-y:auto}
+.cpanel .it{display:grid;grid-template-columns:28px 1fr;gap:10px;padding:12px 18px;border-bottom:1px solid #eee;text-align:left;width:100%;color:#1a1a1a}
+.cpanel .it:hover{background:#fafafa}
+.cpanel .it i{width:24px;height:24px;border-radius:50%;background:#e8452c;color:#fff;display:grid;place-items:center;font-style:normal;font-size:11px}
+.cpanel .it small{color:#888;display:block;margin-bottom:3px}
+.cpanel .it span{font-size:13px;line-height:1.45;white-space:pre-wrap;word-break:break-word}
+.cpanel .foot{padding:14px 18px;border-top:1px solid #eee;display:flex;gap:8px;flex-wrap:wrap}
+.cpanel .foot button{padding:9px 12px;border:1px solid #1a1a1a;text-transform:uppercase;letter-spacing:.06em;font-size:11px}
+.cpanel .foot button.pri{background:#1a1a1a;color:#fff}
+.cpanel .empty2{padding:24px 18px;color:#777;line-height:1.6}
+.cpanel textarea.exp{width:100%;height:160px;font:inherit;font-size:11px;margin:0 18px 12px;width:calc(100% - 36px)}
+.switch .cbtn[aria-pressed="true"]{background:#e8452c;color:#fff}
+.switch .ccount{background:#e8452c;color:#fff;border-radius:999px;padding:1px 7px;margin-left:4px;font-size:11px}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
@@ -359,7 +442,17 @@ details.acc p{margin:0 0 16px;color:var(--muted);font-size:17px}
   <button data-dir="c">C <span class="long">· Colour</span></button>
   <span class="sep"></span>
   <button id="guideBtn" aria-pressed="true">Notes</button>
+  <button id="cBtn" class="cbtn" aria-pressed="false" title="Click anywhere on the page to leave a comment">+ <span class="long">Comment</span></button>
+  <button id="cListBtn" title="All comments"><span class="long">List</span><span class="ccount" id="cCount">0</span></button>
 </div>
+<div class="cbar">Comment mode: click anywhere to pin a comment · Esc or "+ Comment" to stop</div>
+<aside class="cpanel" id="cPanel" aria-label="Client comments">
+  <div class="top"><span>Client comments</span><button id="cClose">Close ✕</button></div>
+  <div class="list" id="cList"></div>
+  <div class="foot"><button class="pri" id="cCopy">Copy all as text</button><button id="cClear">Delete all</button></div>
+</aside>
+<div class="payov" id="payov"><div class="psheet" id="psheet"></div></div>
+<div class="quiz" id="quiz"><div class="qbox" id="qbox"></div></div>
 
 <script>
 const S=[
@@ -388,7 +481,7 @@ const FEAT=[4,7,2];           // bestsellers shown on the landing page
 const FREE=60;                // free delivery threshold
 const SHIP={locker:{t:"Parcel locker",d:"1–2 working days · pick a locker near you",p:2.99},courier:{t:"Courier to your door",d:"1–2 working days · SMS before delivery",p:4.99},store:{t:"Pick up in the studio",d:"Ready the same day · placeholder address",p:0}};
 const PAY={card:{t:"Card",d:"Visa, Mastercard, Amex"},apple:{t:"Apple Pay / Google Pay",d:"One tap on phone"},paypal:{t:"PayPal",d:"Pay with your PayPal account"},bank:{t:"Bank link",d:"Pay from your online bank"}};
-const st={dir:"a",view:"home",fam:"All",sort:"no",pid:1,size:50,qty:1,bag:[],step:1,ship:"locker",pay:"card",sample:null,form:{email:"anna@example.com",first:"Anna",last:"Example",phone:"+371 2000 0000",addr:"Example street 12–4",city:"Riga",zip:"LV-1010",country:"Latvia"},order:null};
+const st={dir:"a",view:"home",fam:"All",sort:"no",pid:1,size:50,qty:1,bag:[],step:1,ship:"locker",pay:"card",sample:null,form:{email:"anna@example.com",first:"Anna",last:"Example",phone:"+371 2000 0000",addr:"Example street 12–4",city:"Riga",zip:"LV-1010",country:"Latvia"},order:null,gift:false,giftMsg:"",bank:"Swedbank"};
 const $=s=>document.querySelector(s);
 const eur=n=>"€"+(Number.isInteger(n)?n:n.toFixed(2));
 function lum(hex){const v=[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)/255).map(c=>c<=.03928?c/12.92:((c+.055)/1.055)**2.4);return .2126*v[0]+.7152*v[1]+.0722*v[2]}
@@ -419,7 +512,8 @@ function photo(s,k="",cls="",label="Product photo"){
 const bagCount=()=>st.bag.reduce((a,b)=>a+b.qty,0);
 const subtotal=()=>st.bag.reduce((a,b)=>a+b.price*b.qty,0);
 const shipCost=()=>st.ship==="store"?0:subtotal()>=FREE&&st.ship==="locker"?0:SHIP[st.ship].p;
-const total=()=>subtotal()+shipCost();
+const GIFT=5;
+const total=()=>subtotal()+shipCost()+(st.gift?GIFT:0);
 function addToBag(item){
   const ex=st.bag.find(b=>b.key===item.key);
   if(ex)ex.qty+=item.qty;else st.bag.push(item);
@@ -436,6 +530,7 @@ function header(){
     `<nav class="main mono">
       <button data-go="home" class="hide-sm" ${st.view==="home"?'aria-current="page"':""}>Home</button>
       <button data-go="shop" ${st.view==="shop"?'aria-current="page"':""}>Shop</button>
+      <button data-quiz class="hide-sm">Scent finder</button>
       <button data-goto-disc class="hide-sm">Discovery set</button>
       <button id="bagBtn">Bag (<span id="bagN">${bagCount()}</span>)</button>
     </nav>`}</div>`;
@@ -467,7 +562,7 @@ function heroA(){const f=S[FEAT[0]-1];return `<section class="a-hero"><div class
     <h1>Nineteen scents.<br><em>Choose by number.</em></h1>
     <p>Each bottle carries a number and two notes. Start with what you already like, then try it on skin.</p>
     <div class="cta"><button class="btn solid" data-go="shop">Shop all 19 scents</button><button class="btn" data-goto-disc>Try the discovery set</button></div>
-    ${note(1,"<strong>Landing page.</strong> The first screen says what the shop is in one line and gives two ways in: browse everything, or start with samples. Use the <strong>A / B / C</strong> buttons below to see three different looks for the same store.","mt")}</div>
+    ${note(1,"<strong>Landing page.</strong> The first screen says what the shop is in one line and gives two ways in: browse everything, or start with samples. Use the <strong>A / B / C</strong> buttons below to see three different looks for the same store. Press <strong>+ Comment</strong> to pin the client's feedback anywhere on the page.","mt")}</div>
   <div class="stage"><div id="aBottle">${photo(f,"h")}</div><div class="cap mono" id="aCap">No. ${f.no} · ${f.name}</div></div>
 </div></section>`}
 function heroB(){const f=S[FEAT[0]-1];return `<section class="b-hero" id="bHero">
@@ -524,7 +619,8 @@ function viewHome(){
     <div><span class="k">Step 2</span><b>Try a 2 ml sample</b><span>€4 each, or all 19 in the discovery set. Wear it for a day.</span></div>
     <div><span class="k">Step 3</span><b>Buy the bottle</b><span>50 or 100 ml. Your sample cost is credited back.</span></div>
   </section>
-  <div class="wrap">${note(3,"<strong>How to choose.</strong> A short guide that answers the main worry of buying perfume online: how do I know I will like it?","mt")}</div>
+  <div class="wrap" style="padding-top:22px"><button class="btn solid" data-quiz>Find your scent in 3 questions</button></div>
+  <div class="wrap">${note(3,"<strong>How to choose.</strong> The <strong>scent finder</strong> asks 3 quick questions and suggests two scents to sample.  A short guide that answers the main worry of buying perfume online: how do I know I will like it?","mt")}</div>
   ${discovery()}${perks()}
   <section class="wrap news"><span class="mono muted">Newsletter</span><h2 style="font-weight:400;font-size:34px;margin:6px 0 0">New scents and restocks, once a month.</h2>
     <form id="newsForm"><input id="newsEmail" type="email" placeholder="Your email" aria-label="Your email"><button class="btn solid">Subscribe</button></form></section>`;
@@ -561,7 +657,7 @@ function viewProduct(){
       <div><span class="lbl2">2. Quantity and add to bag</span><div class="buy">
         <div class="qty"><button data-q="-1" aria-label="One less">−</button><output id="qOut">${st.qty}</output><button data-q="1" aria-label="One more">+</button></div>
         <button class="btn solid" id="addBtn">Add to bag · ${eur(price*st.qty)}</button></div></div>
-      <div class="pay"><button class="ap" data-express> Pay</button><button class="pp" data-express>PayPal</button></div>
+      <div class="pay"><button class="ap" data-express="apple"> Pay</button><button class="pp" data-express="paypal">PayPal</button></div>
       ${note(7,"<strong>Express pay.</strong> Apple Pay and PayPal skip the checkout form completely. In the live shop this is the fastest way to buy on a phone.")}
       <button class="try" data-sample="${s.id}"><div><b>Try it first</b><span>2 ml sample, €4. Credited if you buy the bottle.</span></div><span class="mono">Add +</span></button>
       <div><details class="acc"><summary>How it wears</summary><p>Eau de parfum, around 18% concentration. Lasts 6–8 hours on skin, longer on clothes.</p></details>
@@ -578,6 +674,7 @@ function summary(){
     ${st.sample?`<div class="ln"><div class="sw" style="--c:${S[st.sample-1].c}"></div><div><b>No. ${S[st.sample-1].no} ${S[st.sample-1].name}</b><span class="small">Free 2 ml sample</span></div><span class="mono">€0</span></div>`:""}
     <div class="tl first"><span>Subtotal</span><span>${eur(subtotal())}</span></div>
     <div class="tl"><span>Delivery · ${SHIP[st.ship].t}</span><span>${shipCost()===0?"Free":eur(shipCost())}</span></div>
+    ${st.gift?`<div class="tl"><span>Gift wrap + card</span><span>${eur(GIFT)}</span></div>`:""}
     <div class="tl big"><span>Total</span><span>${eur(total())}</span></div>
     <div class="small vat">Includes VAT</div></aside>`;
 }
@@ -602,18 +699,20 @@ function viewCheckout(){
     <p class="small" style="margin-top:8px">${st.sample?`Selected: No. ${S[st.sample-1].no} ${S[st.sample-1].name}`:"Tap a colour to pick one. Hover to see the name."}</p>
     <div class="co-actions"><button type="button" class="back" data-go="shop">← Keep shopping</button><button class="btn solid">Continue to delivery</button></div></form>`;
   if(st.step===2)body=`<h2>Delivery</h2><p class="lead">Delivering to ${f.first} ${f.last}, ${f.addr}, ${f.city}.</p>
-    ${note(9,"<strong>Checkout, step 2.</strong> Delivery choice with the price shown up front, so there are no surprises at the end. Free delivery over €"+FREE+" encourages a bigger basket. Options and prices are examples.","mb")}
+    ${note(9,"<strong>Checkout, step 2.</strong> Also offers <strong>gift wrapping with a handwritten card</strong>, a big seller around holidays. Delivery choice with the price shown up front, so there are no surprises at the end. Free delivery over €"+FREE+" encourages a bigger basket. Options and prices are examples.","mb")}
     <form id="coForm"><div class="opts">${Object.entries(SHIP).map(([k,v])=>{const p=k==="locker"&&subtotal()>=FREE?0:v.p;return `<label class="opt"><input type="radio" name="ship" value="${k}" ${st.ship===k?"checked":""}><span><b>${v.t}</b><small>${v.d}</small></span><span class="mono">${p===0?"Free":eur(p)}</span></label>`}).join("")}</div>
+    <div class="gift"><label class="check" style="margin:0;color:var(--fg)"><input type="checkbox" id="giftChk" ${st.gift?"checked":""}> <span><b style="font-weight:400;font-size:19px">Make it a gift · ${eur(GIFT)}</b><br><span class="muted" style="font-size:15px">Black gift box, ribbon and a handwritten card. No prices inside.</span></span></label>
+      ${st.gift?`<textarea id="giftMsg" placeholder="Your message for the card (we write it by hand)" maxlength="240">${st.giftMsg}</textarea>`:""}</div>
     <div class="co-actions"><button type="button" class="back" data-step="1">← Back to details</button><button class="btn solid">Continue to payment</button></div></form>`;
   if(st.step===3)body=`<h2>Payment</h2><p class="lead">Total to pay: ${eur(total())}.</p>
-    ${note(10,"<strong>Checkout, step 3.</strong> In the live shop payments run through a payment provider such as Stripe (cards, Apple Pay, Google Pay) plus PayPal. Card details never touch the shop's server. <strong>Nothing is charged in this demo.</strong>","mb")}
+    ${note(10,"<strong>Checkout, step 3.</strong> In the live shop payments run through a payment provider such as Stripe (cards, Apple Pay, Google Pay) plus PayPal. Card details never touch the shop's server. Press <strong>Place order</strong> to see the payment screen. <strong>Nothing is charged in this demo.</strong>","mb")}
     <form id="coForm"><div class="opts">${Object.entries(PAY).map(([k,v])=>`<label class="opt"><input type="radio" name="pay" value="${k}" ${st.pay===k?"checked":""}><span><b>${v.t}</b><small>${v.d}</small></span><span></span></label>`).join("")}</div>
     ${st.pay==="card"?`<div class="fgrid" style="margin-top:14px">
       <div class="field full"><label for="cnum">Card number (demo)</label><input id="cnum" inputmode="numeric" value="4242 4242 4242 4242"></div>
       <div class="field"><label for="cexp">Expiry</label><input id="cexp" value="12 / 28"></div>
       <div class="field"><label for="ccvc">CVC</label><input id="ccvc" value="123"></div></div>`:`<p class="small" style="margin-top:12px">You would be sent to ${PAY[st.pay].t} to confirm, then brought back here.</p>`}
     <label class="check"><input type="checkbox" id="terms" checked> I agree to the terms of sale and the privacy policy.</label>
-    <div class="co-actions"><button type="button" class="back" data-step="2">← Back to delivery</button><button class="btn solid">Place order · ${eur(total())}</button></div></form>`;
+    <div class="co-actions"><button type="button" class="back" data-step="2">← Back to delivery</button><button class="btn solid">Place order and pay · ${eur(total())}</button></div></form>`;
   return `<section class="wrap co">
     <div class="steps">${steps.map((t,i)=>`<span class="${i+1<st.step?"done":i+1===st.step?"cur":""}">${i+1<st.step?"✓ ":""}${i+1}. ${t}</span>`).join("")}</div>
     <div class="co-grid"><div>${body}</div>${summary()}</div></section>`;
@@ -627,7 +726,7 @@ function viewDone(){
     ${note(11,"<strong>Order confirmation.</strong> In the live shop this also sends the receipt email automatically, takes the items out of stock, and notifies the shop owner by email or phone.","mt")}
     <dl>
       <dt>Items</dt><dd>${o.items.map(i=>`${i.title} (${i.sub}) × ${i.qty}`).join("<br>")}${o.sample?`<br>Free sample: No. ${S[o.sample-1].no} ${S[o.sample-1].name}`:""}</dd>
-      <dt>Delivery</dt><dd>${SHIP[o.ship].t} · ${o.addr}</dd>
+      <dt>Delivery</dt><dd>${SHIP[o.ship].t} · ${o.addr}</dd>${o.gift?`<dt>Gift</dt><dd>Gift box + handwritten card${o.giftMsg?`: “${o.giftMsg.replace(/</g,"&lt;")}”`:""}</dd>`:""}
       <dt>Payment</dt><dd>${PAY[o.pay].t} · ${eur(o.total)} (demo, not charged)</dd>
     </dl>
     <span class="lbl2">What happens next</span>
@@ -652,6 +751,7 @@ function render(){
   cancelAnimationFrame(raf);clearInterval(bTimer);if(io)io.disconnect();
   if($("#smoke"))startB();
   if(st.dir==="c"&&document.querySelector(".band"))startC();
+  if(typeof drawPins==="function")drawPins();
 }
 function go(view,extra={}){Object.assign(st,extra);st.view=view;render();scrollTo({top:0})}
 function startB(){
@@ -693,6 +793,7 @@ function openBag(){
       <div class="progress"><i style="width:${Math.min(100,sub/FREE*100)}%"></i></div>
       <div class="tot"><span>Subtotal (${bagCount()} items)</span><span>${eur(sub)}</span></div>
       <button class="btn solid" data-checkout>Checkout</button>
+      <div class="pay"><button class="ap" data-express="apple"> Pay</button><button class="pp" data-express="paypal">PayPal</button></div>
       <button class="btn" data-close>Keep shopping</button>`;
   }
   $("#scrim").classList.add("on");const d=$("#bagDrawer");d.classList.add("on");d.setAttribute("aria-hidden","false");
@@ -721,26 +822,174 @@ document.addEventListener("click",e=>{
   if(d.checkout!==undefined){closeBag();go("checkout",{step:1});return}
   if(d.step){st.step=+d.step;render();scrollTo({top:0});return}
   if(d.free){st.sample=+d.free;readForm();const y=scrollY;render();scrollTo({top:y});return}
-  if(d.express!==undefined){toast("Demo: this opens Apple Pay or PayPal and skips the checkout form");return}
+  if(d.express){
+    if(st.view==="product"){const s=S[st.pid-1];addToBag({key:`${s.id}-${st.size}`,title:`No. ${s.no} ${s.name}`,sub:`Eau de parfum · ${st.size} ml`,price:st.size===50?s.p50:s.p100,qty:st.qty,c:s.c})}
+    if(!st.bag.length)return;closeBag();st.pay=d.express;openPay(d.express,true);return}
+  if(d.quiz!==undefined){openQuiz();return}
   if(d.restart!==undefined){st.bag=[];st.sample=null;st.order=null;st.step=1;go("home");return}
 });
 document.addEventListener("change",e=>{
   if(e.target.id==="sortSel"){st.sort=e.target.value;render();return}
   if(e.target.name==="ship"){st.ship=e.target.value;render();return}
   if(e.target.name==="pay"){st.pay=e.target.value;render();return}
+  if(e.target.id==="giftChk"){const gm=$("#giftMsg");if(gm)st.giftMsg=gm.value;st.gift=e.target.checked;render();return}
 });
 document.addEventListener("submit",e=>{
   e.preventDefault();
   if(e.target.id==="newsForm"){toast("Demo: you would now get a welcome email");e.target.reset();return}
   if(e.target.id!=="coForm")return;
   if(st.step===1){readForm();st.step=2;render();scrollTo({top:0});return}
-  if(st.step===2){st.step=3;render();scrollTo({top:0});return}
+  if(st.step===2){const gm=$("#giftMsg");if(gm)st.giftMsg=gm.value;st.step=3;render();scrollTo({top:0});return}
   if(st.step===3){if(!$("#terms").checked){toast("Please accept the terms to place the order");return}
-    st.order={no:"ANT-"+(10400+Math.floor(Math.random()*500)),first:st.form.first,email:st.form.email,items:st.bag.map(b=>({...b})),sample:st.sample,ship:st.ship,pay:st.pay,total:total(),addr:`${st.form.addr}, ${st.form.city}`};
-    st.bag=[];go("done")}
+    openPay(st.pay)}
 });
+/* ---------- Payment provider screen (demo) ----------
+   In the live shop this screen belongs to the payment provider (e.g. Stripe or PayPal). */
+let payExpress=false;
+function placeOrder(){
+  st.order={no:"ANT-"+(10400+Math.floor(Math.random()*500)),first:st.form.first,email:st.form.email,items:st.bag.map(b=>({...b})),sample:st.sample,ship:st.ship,pay:st.pay,total:total(),addr:`${st.form.addr}, ${st.form.city}`,gift:st.gift,giftMsg:st.giftMsg};
+  st.bag=[];st.gift=false;st.giftMsg="";closePay();go("done");
+}
+function closePay(){$("#payov").classList.remove("on")}
+function paySheet(inner,title="Secure payment"){
+  $("#psheet").innerHTML=`<div class="ptop"><span>🔒 ${title}</span><button data-paycancel>Cancel</button></div><div class="pbody">${inner}</div>`;
+}
+const merch=()=>`<div class="merch"><i>A</i><div><div style="font-weight:600">Antons Parfums</div><div style="color:#697386;font-size:13px">Order for ${st.form.first} ${st.form.last}</div></div></div><div class="amt">${eur(total())}</div>`;
+const demoNote=t=>`<div class="demo"><b>Demo · 10b</b> ${t}</div>`;
+function openPay(method,express=false){
+  payExpress=express;$("#payov").classList.add("on");
+  if(method==="card")paySheet(`${merch()}
+    ${demoNote("This is the payment provider's page (for example Stripe). The shop never sees the card number. Demo card is pre-filled, nothing is charged.")}
+    <div><label for="pcn">Card number</label><input id="pcn" value="4242 4242 4242 4242" inputmode="numeric"></div>
+    <div class="two"><div><label for="pce">Expiry</label><input id="pce" value="12 / 28"></div><div><label for="pcc">CVC</label><input id="pcc" value="123"></div></div>
+    <div><label for="pcname">Name on card</label><input id="pcname" value="${st.form.first} ${st.form.last}"></div>
+    <button class="pbtn" data-paynow="card">Pay ${eur(total())}</button><div class="lock">Payments secured by the provider · 3-D Secure</div>`);
+  if(method==="apple")paySheet(`<div class="center apple" style="margin:-22px -22px 0;padding:24px 22px">
+      <div style="font-weight:600;font-size:18px"> Pay</div>${merch()}
+      ${express?`<div style="font-size:13px;color:#555;text-align:left;width:100%">Ship to: ${st.form.first} ${st.form.last}, ${st.form.addr}, ${st.form.city}<br>Delivery: ${SHIP[st.ship].t}<br>Card: Visa •••• 4242</div>`:`<div style="font-size:13px;color:#555">Card: Visa •••• 4242</div>`}
+      <div class="faceid">☺</div><div style="font-size:13px;color:#555">Confirm with Face ID or double-click the side button</div></div>
+    ${demoNote(express?"Express checkout: address and card come from the phone's wallet, so the customer skips the whole checkout form. One tap and done.":"On a phone this is the real Apple Pay or Google Pay sheet.")}
+    <button class="pbtn black" data-paynow="apple">Confirm with Face ID</button>`,"Apple Pay");
+  if(method==="paypal")paySheet(`<div class="ppbar" style="margin:-22px -22px 0">PayPal</div>${merch()}
+    ${demoNote(express?"Express checkout: PayPal sends the delivery address back to the shop, so no form is needed.":"The customer logs in to PayPal and approves the payment, then comes back to the shop.")}
+    <div><label for="ppe">Email</label><input id="ppe" value="${st.form.email}"></div>
+    <div><label for="ppp">Password</label><input id="ppp" type="password" value="demo-password"></div>
+    <button class="pbtn pp" data-paynow="paypal">Log in and pay ${eur(total())}</button>`,"PayPal checkout");
+  if(method==="bank")paySheet(`${merch()}
+    ${demoNote("Bank link: the customer picks their bank, approves in the bank app, and returns to the shop. Popular in the Baltics.")}
+    <div class="banks">${["Swedbank","SEB","Luminor","Citadele"].map(b=>`<button data-bank="${b}" aria-pressed="${st.bank===b}">${b}</button>`).join("")}</div>
+    <button class="pbtn bank" data-paynow="bank">Continue to ${st.bank}</button>`,"Bank link");
+}
+function processPay(method){
+  paySheet(`<div class="center"><div class="spin"></div><div style="font-weight:600">${method==="bank"?"Waiting for approval in your bank app…":"Processing payment…"}</div><div style="color:#697386;font-size:13px">Please don't close this window</div></div>`);
+  setTimeout(()=>{
+    if(method==="card"){paySheet(`<div class="center"><div style="font-weight:600;font-size:17px">Confirm it's you</div><div style="color:#697386;font-size:13px;max-width:30ch">Your bank sent a notification. Approve the payment of ${eur(total())} to Antons Parfums.</div></div>
+      ${demoNote("3-D Secure: the bank asks the cardholder to confirm. This is required for EU card payments.")}<button class="pbtn" data-approve>Approve in bank app</button>`,"Bank verification");return}
+    paidOk()},1500);
+}
+function paidOk(){
+  paySheet(`<div class="center"><div class="okc">✓</div><div style="font-weight:600;font-size:18px">Payment successful</div><div style="color:#697386;font-size:13px">${eur(total())} paid to Antons Parfums · returning to the shop…</div></div>`);
+  setTimeout(placeOrder,1400);
+}
+
+/* ---------- Scent finder quiz ---------- */
+const QZ=[
+  {q:"Which smell do you reach for first?",k:"fam",o:[["Fresh","Citrus, green leaves, sea air"],["Floral","Flowers, petals, powder"],["Woody","Wood, smoke, forest"],["Amber","Warm, sweet, spicy"]]},
+  {q:"When will you mostly wear it?",k:"time",o:[["Day","Work, errands, daylight"],["Evening","Dinners, nights out"]]},
+  {q:"How strong should it be?",k:"str",o:[["Close to skin","Only people near you notice"],["Noticed in the room","A trail people remember"]]},
+];
+const QMAP={Fresh:[5,18,1,13,10],Floral:[17,9,3,6,14],Woody:[12,8,16,2,19],Amber:[15,7,4,11]};
+let qa={},qi=0;
+function openQuiz(){qa={};qi=0;$("#quiz").classList.add("on");drawQuiz()}
+function closeQuiz(){$("#quiz").classList.remove("on")}
+function drawQuiz(){
+  const box=$("#qbox");
+  if(qi<QZ.length){const Q=QZ[qi];
+    box.innerHTML=`<button class="qx mono" data-qclose>Close ✕</button><span class="mono muted">Scent finder · question ${qi+1} of ${QZ.length}</span>
+    <div class="qdots" style="margin-top:10px">${QZ.map((_,i)=>`<i class="${i<=qi?"on":""}"></i>`).join("")}</div><h2>${Q.q}</h2>
+    <div class="qopts">${Q.o.map(([a,b])=>`<button data-qa="${a}"><b>${a}</b><span>${b}</span></button>`).join("")}</div>
+    ${qi===0?`<div style="margin-top:14px">${note("Q","<strong>Scent finder.</strong> Three easy questions instead of perfume jargon. It ends with two suggestions and a one-click way to try both as samples.")}</div>`:""}`;
+    return}
+  const arr=QMAP[qa.fam];let i=(qa.str==="Noticed in the room"?2:0)+(qa.time==="Evening"?1:0);i=Math.min(i,arr.length-2);
+  const pick=[arr[i],arr[i+1]].map(n=>S[n-1]);
+  box.innerHTML=`<button class="qx mono" data-qclose>Close ✕</button><span class="mono muted">Your match · ${qa.fam} · ${qa.time} · ${qa.str}</span>
+    <h2>Start with these two.</h2>
+    <div class="qres">${pick.map(s=>`<button data-qpid="${s.id}">${photo(s,"q","")}<b>${s.name}</b><span class="small">No. ${s.no} · ${s.line}</span></button>`).join("")}</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn solid" data-qadd="${pick.map(s=>s.id).join(",")}">Add both as 2 ml samples · €8</button><button class="btn" data-qagain>Start again</button></div>`;
+}
+
+/* ---------- Client comments: pin a note anywhere on the page ----------
+   Saved in this browser only (localStorage). "Copy all" turns them into a list to paste into a message or doc. */
+const CK="antons-comments-v1";
+let comments=[];try{comments=JSON.parse(localStorage.getItem(CK)||"[]")}catch(e){comments=[]}
+const saveC=()=>{try{localStorage.setItem(CK,JSON.stringify(comments))}catch(e){}};
+const VNAME={home:"Landing page",shop:"Shop",product:"Product page",checkout:"Checkout",done:"Order confirmation"};
+const where=c=>`${VNAME[c.view]||c.view}${c.view==="product"?" (No. "+S[c.pid-1].no+")":""}${c.view==="checkout"?" step "+c.step:""} · look ${c.dir.toUpperCase()}`;
+const ctxMatch=c=>c.view===st.view&&c.dir===st.dir&&(c.view!=="product"||c.pid===st.pid)&&(c.view!=="checkout"||c.step===st.step);
+let cmode=false;
+function setCmode(on){cmode=on;document.documentElement.dataset.cmode=on?"on":"off";$("#cBtn").setAttribute("aria-pressed",on);closePop()}
+function drawPins(){
+  document.querySelectorAll(".pin").forEach(p=>p.remove());
+  comments.forEach((c,i)=>{if(!ctxMatch(c))return;const p=document.createElement("button");p.className="pin";p.textContent=i+1;p.dataset.pin=c.id;
+    p.style.left=(c.x*document.documentElement.clientWidth)+"px";p.style.top=c.y+"px";p.title=c.text;document.body.appendChild(p)});
+  $("#cCount").textContent=comments.length;
+}
+function closePop(){document.querySelectorAll(".cpop").forEach(p=>p.remove())}
+function openPop(c,isNew){
+  closePop();const el=document.createElement("div");el.className="cpop";
+  const W=document.documentElement.clientWidth,px=c.x*W;
+  el.style.left=Math.max(16,Math.min(px,W-316))+"px";el.style.top=(c.y+8)+"px";
+  el.innerHTML=`<div>${isNew?"New comment":"Comment "+(comments.indexOf(c)+1)} · ${where(c)}</div>
+    <textarea id="cText" placeholder="What does the client think here? e.g. 'Prefers bigger photos', 'Add Latvian language'">${c.text||""}</textarea>
+    <div class="row2"><button class="del" data-cdel="${c.id}">${isNew?"Cancel":"Delete"}</button><button class="pri" data-csave="${c.id}">Save</button></div>`;
+  el.dataset.cid=c.id;el._c=c;el._new=isNew;document.body.appendChild(el);el.querySelector("textarea").focus();
+}
+function drawList(){
+  const L=$("#cList");
+  if(!comments.length){L.innerHTML=`<div class="empty2">No comments yet.<br><br>Press <b>+ Comment</b> at the bottom, then click any part of the page to pin what the client says about it. Comments stay in this browser until you delete them.</div>`;return}
+  L.innerHTML=comments.map((c,i)=>`<button class="it" data-cgo="${c.id}"><i>${i+1}</i><div><small>${where(c)}</small><span>${c.text.replace(/</g,"&lt;")}</span></div></button>`).join("");
+}
+function exportText(){return "Antons store · client comments\n\n"+comments.map((c,i)=>`${i+1}. [${where(c)}] ${c.text}`).join("\n")}
+document.addEventListener("click",e=>{
+  if(!cmode)return;
+  if(e.target.closest(".switch,.cpanel,.cpop,.pin,.payov,.quiz"))return;
+  e.preventDefault();e.stopPropagation();
+  const c={id:"c"+Date.now(),view:st.view,dir:st.dir,pid:st.pid,step:st.step,x:e.pageX/document.documentElement.clientWidth,y:e.pageY,text:""};
+  openPop(c,true);
+},true);
+document.addEventListener("click",e=>{
+  const t=e.target.closest("button");if(!t)return;const d=t.dataset;
+  if(t.id==="cBtn"){setCmode(!cmode);return}
+  if(t.id==="cListBtn"){drawList();$("#cPanel").classList.add("on");return}
+  if(t.id==="cClose"){$("#cPanel").classList.remove("on");return}
+  if(t.id==="cCopy"){const txt=exportText();
+    const done=()=>toast("Copied "+comments.length+" comments. Paste them into a message or doc.");
+    const fallback=()=>{let ta=document.querySelector("#cPanel textarea.exp");if(!ta){ta=document.createElement("textarea");ta.className="exp";$("#cPanel .foot").before(ta)}ta.value=txt;ta.select();toast("Select all and copy the text above")};
+    try{navigator.clipboard.writeText(txt).then(done,fallback)}catch(err){fallback()}return}
+  if(t.id==="cClear"){if(t.dataset.sure){comments=[];saveC();drawPins();drawList();t.textContent="Delete all";delete t.dataset.sure}else{t.dataset.sure="1";t.textContent="Tap again to delete all"}return}
+  if(d.csave){const pop=t.closest(".cpop");const c=pop._c;c.text=pop.querySelector("textarea").value.trim();
+    if(!c.text){closePop();return}if(pop._new)comments.push(c);saveC();closePop();drawPins();drawList();toast("Comment saved");return}
+  if(d.cdel){const pop=t.closest(".cpop");if(!pop._new){comments=comments.filter(x=>x.id!==d.cdel);saveC();drawPins();drawList()}closePop();return}
+  if(d.pin){const c=comments.find(x=>x.id===d.pin);if(c)openPop(c,false);return}
+  if(d.cgo){const c=comments.find(x=>x.id===d.cgo);if(!c)return;$("#cPanel").classList.remove("on");
+    st.dir=c.dir;st.pid=c.pid;if(c.view==="checkout"&&!st.bag.length){toast("Add something to the bag to reopen checkout");return}
+    if(c.view==="done"&&!st.order){toast("Place a demo order to see that page again");return}
+    st.step=c.step;st.view=c.view;render();scrollTo({top:Math.max(0,c.y-200)});setTimeout(()=>openPop(c,false),50);return}
+  /* payment + quiz */
+  if(d.paycancel!==undefined){closePay();toast("Payment cancelled. Nothing was charged.");return}
+  if(d.paynow){processPay(d.paynow);return}
+  if(d.approve!==undefined){paySheet(`<div class="center"><div class="spin"></div><div style="font-weight:600">Confirming with your bank…</div></div>`);setTimeout(paidOk,1000);return}
+  if(d.bank){st.bank=d.bank;openPay("bank",payExpress);return}
+  if(d.qclose!==undefined){closeQuiz();return}
+  if(d.qa){qa[QZ[qi].k]=d.qa;qi++;drawQuiz();return}
+  if(d.qagain!==undefined){qa={};qi=0;drawQuiz();return}
+  if(d.qpid){closeQuiz();go("product",{pid:+d.qpid,size:50,qty:1});return}
+  if(d.qadd){d.qadd.split(",").forEach(id=>{const s=S[id-1];addToBag({key:`${s.id}-2`,title:`No. ${s.no} ${s.name}`,sub:"2 ml sample",price:4,qty:1,c:s.c})});closeQuiz();openBag();return}
+});
+addEventListener("resize",()=>drawPins());
+
 $("#scrim").addEventListener("click",closeBag);
-addEventListener("keydown",e=>{if(e.key==="Escape")closeBag()});
+addEventListener("keydown",e=>{if(e.key==="Escape"){closeBag();closeQuiz();if(cmode)setCmode(false);closePop()}});
 document.addEventListener("pointerover",e=>{
   if(st.dir!=="a")return;const r=e.target.closest(".row");const hb=$("#aBottle");if(!r||!hb)return;const s=S[r.dataset.pid-1];
   if(hb.dataset.id!=s.id){hb.dataset.id=s.id;hb.innerHTML=photo(s,"h");$("#aCap").textContent=`No. ${s.no} · ${s.name}`}
