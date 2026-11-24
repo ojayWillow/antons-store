@@ -29,3 +29,7 @@ One static `index.html` (HTML, CSS, vanilla JS). No build step. Deployed on Verc
 ## Product photos
 
 Every scent has a framed photo box (shop list, cards, colour bands, product page). Add `images/01.jpg` … `images/19.jpg` (4:5, 1200 × 1500) and they replace the drawn bottles automatically. See `images/README.md`.
+
+## Link preview
+
+`index.html` has Open Graph and Twitter tags (title "Antons Parfume Shop", description, `og.png` 1200×630), so shared links show a card in WhatsApp, Messenger, Slack, etc. Update `og.png` when real photos arrive.
