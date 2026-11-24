@@ -39,7 +39,9 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 nav.main{display:flex;gap:22px;align-items:center}
 nav.main button:hover{text-decoration:underline;text-underline-offset:4px}
 nav.main button[aria-current="page"]{text-decoration:underline;text-underline-offset:4px}
-@media (max-width:640px){nav.main{gap:14px}nav.main .hide-sm{display:none}}
+nav.main button{white-space:nowrap}
+.show-sm{display:none}
+@media (max-width:640px){nav.main{gap:14px}nav.main .hide-sm{display:none}nav.main .show-sm{display:inline}}
 
 /* Shared bits */
 .bottle{display:block;width:100%;height:auto}
@@ -310,6 +312,36 @@ details.acc p{margin:0 0 16px;color:var(--muted);font-size:17px}
 .timeline div:first-child{border-top:1px solid var(--line)}
 @media (max-width:860px){.co-grid{grid-template-columns:1fr;gap:24px}.sum{position:static}.fgrid{grid-template-columns:1fr}.done-box dl{grid-template-columns:110px minmax(0,1fr)}}
 
+/* ===== Accounts + validation ===== */
+.opt-tag{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:1px 6px;margin-left:4px;vertical-align:middle}
+.hint{font-size:14px;color:var(--muted)}
+.err{font-family:var(--mono);font-size:12px;color:#c23a26;display:block}
+.err:empty{display:none}
+.field.bad input,.field.bad select{border-color:#c23a26;box-shadow:inset 0 0 0 1px #c23a26}
+.check.bad{color:#c23a26}
+.fhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.co .check{margin-top:14px}
+.acc-choice{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.acard{border:1px solid var(--line);background:var(--panel);padding:20px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.acard>b{font-weight:400;font-size:26px;line-height:1.1}
+.or{display:flex;align-items:center;gap:10px;color:var(--muted);font-family:var(--mono);font-size:11px;text-transform:uppercase}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+.acc-page{padding-block:48px 120px}
+.acc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.acc-head h1{font-weight:400;font-size:clamp(44px,6vw,76px);line-height:1;margin:6px 0 0}
+.acc-form{max-width:520px;display:flex;flex-direction:column;gap:14px}
+.acc-form .check{margin:0}
+.tabs{display:flex;gap:0;max-width:520px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+.tabs button{flex:1;padding:12px;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs button[aria-pressed="true"]{color:var(--fg);border-color:var(--fg)}
+.social{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.acc-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:14px;align-items:start}
+.ord{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:10px}
+.ord>div{display:flex;flex-direction:column;gap:2px}
+.ord .right{align-items:flex-end}
+.pill{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;background:#f3e3b5;color:#5a4410;padding:2px 8px;border-radius:999px}
+@media (max-width:860px){.acc-choice,.acc-grid,.social{grid-template-columns:1fr}}
+
 /* ===== Guide notes: explain the mockup to the client ===== */
 .note{display:none;gap:10px;align-items:flex-start;background:#fff4c9;color:#2b2517;border:1px solid #e3cf7d;padding:10px 12px;font-family:var(--mono);font-size:11.5px;line-height:1.55;letter-spacing:.01em;text-transform:none;text-align:left;max-width:560px;box-shadow:0 2px 0 rgba(0,0,0,.06)}
 .note b{flex:none;display:grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:#2b2517;color:#fff4c9;font-weight:500;font-size:10.5px}
@@ -481,7 +513,7 @@ const FEAT=[4,7,2];           // bestsellers shown on the landing page
 const FREE=60;                // free delivery threshold
 const SHIP={locker:{t:"Parcel locker",d:"1–2 working days · pick a locker near you",p:2.99},courier:{t:"Courier to your door",d:"1–2 working days · SMS before delivery",p:4.99},store:{t:"Pick up in the studio",d:"Ready the same day · placeholder address",p:0}};
 const PAY={card:{t:"Card",d:"Visa, Mastercard, Amex"},apple:{t:"Apple Pay / Google Pay",d:"One tap on phone"},paypal:{t:"PayPal",d:"Pay with your PayPal account"},bank:{t:"Bank link",d:"Pay from your online bank"}};
-const st={dir:"a",view:"home",fam:"All",sort:"no",pid:1,size:50,qty:1,bag:[],step:1,ship:"locker",pay:"card",sample:null,form:{email:"anna@example.com",first:"Anna",last:"Example",phone:"+371 2000 0000",addr:"Example street 12–4",city:"Riga",zip:"LV-1010",country:"Latvia"},order:null,gift:false,giftMsg:"",bank:"Swedbank"};
+const st={dir:"a",view:"home",fam:"All",sort:"no",pid:1,size:50,qty:1,bag:[],step:1,ship:"locker",pay:"card",sample:null,form:{email:"",first:"",last:"",phone:"",addr:"",apt:"",city:"",zip:"",country:"Latvia",mkt:false},user:null,acc:"signin",accFrom:null,order:null,gift:false,giftMsg:"",bank:"Swedbank"};
 const $=s=>document.querySelector(s);
 const eur=n=>"€"+(Number.isInteger(n)?n:n.toFixed(2));
 function lum(hex){const v=[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)/255).map(c=>c<=.03928?c/12.92:((c+.055)/1.055)**2.4);return .2126*v[0]+.7152*v[1]+.0722*v[2]}
@@ -532,6 +564,7 @@ function header(){
       <button data-go="shop" ${st.view==="shop"?'aria-current="page"':""}>Shop</button>
       <button data-quiz class="hide-sm">Scent finder</button>
       <button data-goto-disc class="hide-sm">Discovery set</button>
+      <button data-go="account" ${st.view==="account"?'aria-current="page"':""}><span class="hide-sm">${st.user?"Hi, "+esc(st.user.first||"you"):"Sign in"}</span><span class="show-sm">Account</span></button>
       <button id="bagBtn">Bag (<span id="bagN">${bagCount()}</span>)</button>
     </nav>`}</div>`;
 }
@@ -678,44 +711,144 @@ function summary(){
     <div class="tl big"><span>Total</span><span>${eur(total())}</span></div>
     <div class="small vat">Includes VAT</div></aside>`;
 }
+/* ---------- Form helpers with validation ---------- */
+const DEMO={email:"anna@example.com",first:"Anna",last:"Example",phone:"+371 2000 0000",addr:"Example street 12",apt:"Flat 4",city:"Riga",zip:"LV-1010",country:"Latvia"};
+const COUNTRIES=["Latvia","Lithuania","Estonia","Finland","Germany","Other EU country"];
+const esc=v=>String(v??"").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+function fld(id,label,o={}){
+  const v=o.val!==undefined?o.val:(st.form[id]??"");
+  return `<div class="field ${o.full?"full":""}"><label for="${id}">${label}${o.opt?` <span class="opt-tag">optional</span>`:""}</label>
+    <input id="${id}" name="${id}" type="${o.type||"text"}" value="${esc(v)}" ${o.ac?`autocomplete="${o.ac}"`:""} ${o.ph?`placeholder="${o.ph}"`:""} ${o.im?`inputmode="${o.im}"`:""} data-rule="${o.rule||(o.opt?"":"req")}" data-label="${label}">
+    ${o.hint?`<span class="hint">${o.hint}</span>`:""}<span class="err" aria-live="polite"></span></div>`;
+}
+const RULES={
+  req:(v,l)=>v?"":`Enter your ${l.toLowerCase()}`,
+  email:v=>!v?"Enter your email":/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)?"":"Enter an email like name@example.com",
+  phone:v=>!v||/^\+?[\d\s()-]{7,}$/.test(v)?"":"Use digits with country code, e.g. +371 2000 0000",
+  zip:v=>{if(!v)return "Enter your postcode";const c=($("#country")||{}).value||"Latvia";return c==="Latvia"&&!/^(LV-?)?\d{4}$/i.test(v)?"Latvian postcodes look like LV-1010":""},
+  pass:v=>v.length>=8?"":"Use at least 8 characters",
+  terms:(v,l,el)=>el.checked?"":"Please accept the terms to continue",
+};
+function validate(form){
+  let first=null;
+  form.querySelectorAll("[data-rule]").forEach(el=>{
+    const r=el.dataset.rule;if(!r)return;const msg=RULES[r](el.type==="checkbox"?"":el.value.trim(),el.dataset.label||"",el);
+    const box=el.closest(".field,.check");box.classList.toggle("bad",!!msg);el.setAttribute("aria-invalid",!!msg);
+    const er=box.querySelector(".err");if(er)er.textContent=msg;if(msg&&!first)first=el;
+  });
+  if(first){first.focus();toast("Please check the highlighted fields");return false}
+  return true;
+}
+function readForm(){["email","first","last","phone","addr","apt","city","zip","country"].forEach(k=>{const el=document.getElementById(k);if(el)st.form[k]=el.value.trim()});const m=$("#mkt");if(m)st.form.mkt=m.checked}
+
 function viewCheckout(){
-  const steps=["Details","Delivery","Payment"];
+  const steps=["Account","Details","Delivery","Payment"];
   const f=st.form;
   let body="";
-  if(st.step===1)body=`<h2>Your details</h2><p class="lead">No account needed. We only ask what the courier needs.</p>
-    ${note(8,"<strong>Checkout, step 1.</strong> Guest checkout: no password or sign-up, which is the biggest reason people leave a checkout. The fields are pre-filled with demo data, so you can just press Continue.","mb")}
-    <form id="coForm"><div class="fgrid">
-      <div class="field full"><label for="email">Email</label><input id="email" type="email" required value="${f.email}"></div>
-      <div class="field"><label for="first">First name</label><input id="first" required value="${f.first}"></div>
-      <div class="field"><label for="last">Last name</label><input id="last" required value="${f.last}"></div>
-      <div class="field full"><label for="phone">Phone (for delivery SMS)</label><input id="phone" required value="${f.phone}"></div>
-      <div class="field full"><label for="addr">Address</label><input id="addr" required value="${f.addr}"></div>
-      <div class="field"><label for="city">City</label><input id="city" required value="${f.city}"></div>
-      <div class="field"><label for="zip">Postcode</label><input id="zip" required value="${f.zip}"></div>
-      <div class="field full"><label for="country">Country</label><select id="country">${["Latvia","Lithuania","Estonia","Finland","Germany","Other EU country"].map(c=>`<option ${c===f.country?"selected":""}>${c}</option>`).join("")}</select></div>
+  if(st.step===0)body=`<h2>How would you like to check out?</h2><p class="lead">Sign in to use your saved address, or continue as a guest. Both take about a minute.</p>
+    ${note(8,"<strong>Checkout, step 1: account choice.</strong> The three standard options. <strong>Guest checkout</strong> is the most used: forcing sign-up is a top reason people abandon a purchase. Returning customers sign in so their address fills itself in. Any email and an 8-character password work in this demo.","mb")}
+    <div class="acc-choice">
+      <form id="coSignin" class="acard" novalidate><b>Sign in</b><span class="muted">For returning customers.</span>
+        ${fld("siEmail","Email",{type:"email",rule:"email",ac:"email",full:1,val:""})}
+        ${fld("siPass","Password",{type:"password",rule:"pass",ac:"current-password",full:1,val:""})}
+        <button class="btn solid wide">Sign in and continue</button>
+        <button type="button" class="link" data-acc="forgot" data-from="checkout">Forgot password?</button></form>
+      <div class="acard"><b>New customer</b><span class="muted">Create an account to track orders and check out faster next time.</span>
+        <button class="btn wide" data-acc="create" data-from="checkout">Create an account</button>
+        <div class="or"><span>or</span></div>
+        <button class="btn solid wide" data-guest>Continue as guest</button>
+        <span class="small">You can still create an account after your order.</span></div>
     </div>
-    <h4>Choose your free 2 ml sample</h4>
-    <div class="samples">${S.map(s=>`<button type="button" data-free="${s.id}" style="--c:${s.c};--t:${txtOn(s.c)}" aria-pressed="${st.sample===s.id}" title="No. ${s.no} ${s.name}">${s.no}</button>`).join("")}</div>
-    <p class="small" style="margin-top:8px">${st.sample?`Selected: No. ${S[st.sample-1].no} ${S[st.sample-1].name}`:"Tap a colour to pick one. Hover to see the name."}</p>
-    <div class="co-actions"><button type="button" class="back" data-go="shop">← Keep shopping</button><button class="btn solid">Continue to delivery</button></div></form>`;
-  if(st.step===2)body=`<h2>Delivery</h2><p class="lead">Delivering to ${f.first} ${f.last}, ${f.addr}, ${f.city}.</p>
-    ${note(9,"<strong>Checkout, step 2.</strong> Also offers <strong>gift wrapping with a handwritten card</strong>, a big seller around holidays. Delivery choice with the price shown up front, so there are no surprises at the end. Free delivery over €"+FREE+" encourages a bigger basket. Options and prices are examples.","mb")}
-    <form id="coForm"><div class="opts">${Object.entries(SHIP).map(([k,v])=>{const p=k==="locker"&&subtotal()>=FREE?0:v.p;return `<label class="opt"><input type="radio" name="ship" value="${k}" ${st.ship===k?"checked":""}><span><b>${v.t}</b><small>${v.d}</small></span><span class="mono">${p===0?"Free":eur(p)}</span></label>`}).join("")}</div>
+    <div class="co-actions"><button type="button" class="back" data-go="shop">← Keep shopping</button></div>`;
+  if(st.step===1)body=`<h2>Contact and delivery address</h2><p class="lead">${st.user?`Signed in as ${esc(st.user.email)}. We filled in your saved address.`:"Checking out as a guest."} Fields marked optional can be left empty.</p>
+    ${note(9,"<strong>Checkout, step 2: customer details.</strong> The standard information every shop needs: <strong>email</strong> for the receipt, <strong>name and address</strong> for the courier. <strong>Phone is optional</strong> (only for delivery SMS). Each field is checked before continuing: try pressing Continue with an empty form. Press <em>Fill demo data</em> to skip typing.","mb")}
+    <form id="coForm" novalidate>
+      <div class="fhead"><h4 style="margin:0">Contact</h4>${st.user?"":`<button type="button" class="link" data-demo>Fill demo data</button>`}</div>
+      <div class="fgrid">
+      ${fld("email","Email",{type:"email",rule:"email",ac:"email",full:1,hint:"For your receipt and delivery updates."})}
+      ${fld("phone","Phone",{type:"tel",rule:"phone",opt:1,ac:"tel",im:"tel",full:1,ph:"+371 …",hint:"Only used by the courier to text you."})}
+      </div>
+      <label class="check"><input type="checkbox" id="mkt" ${f.mkt?"checked":""}> <span>Email me about new scents and restocks, about once a month. <span class="opt-tag">optional</span></span></label>
+      <h4>Delivery address</h4>
+      <div class="fgrid">
+      ${fld("first","First name",{ac:"given-name"})}
+      ${fld("last","Last name",{ac:"family-name"})}
+      <div class="field full"><label for="country">Country</label><select id="country" autocomplete="country-name">${COUNTRIES.map(c=>`<option ${c===f.country?"selected":""}>${c}</option>`).join("")}</select></div>
+      ${fld("addr","Street and house number",{ac:"address-line1",full:1})}
+      ${fld("apt","Apartment, floor",{opt:1,ac:"address-line2",full:1})}
+      ${fld("city","City",{ac:"address-level2"})}
+      ${fld("zip","Postcode",{rule:"zip",ac:"postal-code",ph:"LV-1010"})}
+      </div>
+      <h4>Choose your free 2 ml sample <span class="opt-tag">optional</span></h4>
+      <div class="samples">${S.map(s=>`<button type="button" data-free="${s.id}" style="--c:${s.c};--t:${txtOn(s.c)}" aria-pressed="${st.sample===s.id}" title="No. ${s.no} ${s.name}">${s.no}</button>`).join("")}</div>
+      <p class="small" style="margin-top:8px">${st.sample?`Selected: No. ${S[st.sample-1].no} ${S[st.sample-1].name}`:"Tap a colour to pick one. Hover to see the name."}</p>
+      <div class="co-actions"><button type="button" class="back" data-step="0">← Back</button><button class="btn solid">Continue to delivery</button></div></form>`;
+  if(st.step===2)body=`<h2>Delivery</h2><p class="lead">Delivering to ${esc(f.first)} ${esc(f.last)}, ${esc(f.addr)}${f.apt?", "+esc(f.apt):""}, ${esc(f.city)} ${esc(f.zip)}, ${esc(f.country)}.</p>
+    ${note(10,"<strong>Checkout, step 3: delivery.</strong> Price shown up front for each option, so there are no surprises at the end. Free delivery over €"+FREE+" encourages a bigger basket. Also offers <strong>gift wrapping with a handwritten card</strong>. Options and prices are examples.","mb")}
+    <form id="coForm" novalidate><div class="opts">${Object.entries(SHIP).map(([k,v])=>{const p=k==="locker"&&subtotal()>=FREE?0:v.p;return `<label class="opt"><input type="radio" name="ship" value="${k}" ${st.ship===k?"checked":""}><span><b>${v.t}</b><small>${v.d}</small></span><span class="mono">${p===0?"Free":eur(p)}</span></label>`}).join("")}</div>
     <div class="gift"><label class="check" style="margin:0;color:var(--fg)"><input type="checkbox" id="giftChk" ${st.gift?"checked":""}> <span><b style="font-weight:400;font-size:19px">Make it a gift · ${eur(GIFT)}</b><br><span class="muted" style="font-size:15px">Black gift box, ribbon and a handwritten card. No prices inside.</span></span></label>
-      ${st.gift?`<textarea id="giftMsg" placeholder="Your message for the card (we write it by hand)" maxlength="240">${st.giftMsg}</textarea>`:""}</div>
+      ${st.gift?`<textarea id="giftMsg" placeholder="Your message for the card (we write it by hand)" maxlength="240">${esc(st.giftMsg)}</textarea>`:""}</div>
     <div class="co-actions"><button type="button" class="back" data-step="1">← Back to details</button><button class="btn solid">Continue to payment</button></div></form>`;
-  if(st.step===3)body=`<h2>Payment</h2><p class="lead">Total to pay: ${eur(total())}.</p>
-    ${note(10,"<strong>Checkout, step 3.</strong> In the live shop payments run through a payment provider such as Stripe (cards, Apple Pay, Google Pay) plus PayPal. Card details never touch the shop's server. Press <strong>Place order</strong> to see the payment screen. <strong>Nothing is charged in this demo.</strong>","mb")}
-    <form id="coForm"><div class="opts">${Object.entries(PAY).map(([k,v])=>`<label class="opt"><input type="radio" name="pay" value="${k}" ${st.pay===k?"checked":""}><span><b>${v.t}</b><small>${v.d}</small></span><span></span></label>`).join("")}</div>
-    ${st.pay==="card"?`<div class="fgrid" style="margin-top:14px">
-      <div class="field full"><label for="cnum">Card number (demo)</label><input id="cnum" inputmode="numeric" value="4242 4242 4242 4242"></div>
-      <div class="field"><label for="cexp">Expiry</label><input id="cexp" value="12 / 28"></div>
-      <div class="field"><label for="ccvc">CVC</label><input id="ccvc" value="123"></div></div>`:`<p class="small" style="margin-top:12px">You would be sent to ${PAY[st.pay].t} to confirm, then brought back here.</p>`}
-    <label class="check"><input type="checkbox" id="terms" checked> I agree to the terms of sale and the privacy policy.</label>
+  if(st.step===3)body=`<h2>Payment</h2><p class="lead">Total to pay: ${eur(total())}. Receipt goes to ${esc(f.email)}.</p>
+    ${note(11,"<strong>Checkout, step 4: payment.</strong> In the live shop payments run through a provider such as Stripe (cards, Apple Pay, Google Pay) plus PayPal. Card details never touch the shop's server. The <strong>terms box must be ticked</strong> (EU requirement). Press <strong>Place order and pay</strong> to see the payment screen. <strong>Nothing is charged in this demo.</strong>","mb")}
+    <form id="coForm" novalidate><div class="opts">${Object.entries(PAY).map(([k,v])=>`<label class="opt"><input type="radio" name="pay" value="${k}" ${st.pay===k?"checked":""}><span><b>${v.t}</b><small>${v.d}</small></span><span></span></label>`).join("")}</div>
+    <p class="small" style="margin-top:12px">${st.pay==="card"?"You enter your card on the next, secure screen.":`You will be sent to ${PAY[st.pay].t} to confirm, then brought back here.`}</p>
+    <label class="check"><input type="checkbox" id="terms" data-rule="terms"> <span>I agree to the <u>terms of sale</u> and the <u>privacy policy</u>, and understand that unopened bottles can be returned within 14 days.<span class="err" aria-live="polite"></span></span></label>
     <div class="co-actions"><button type="button" class="back" data-step="2">← Back to delivery</button><button class="btn solid">Place order and pay · ${eur(total())}</button></div></form>`;
   return `<section class="wrap co">
-    <div class="steps">${steps.map((t,i)=>`<span class="${i+1<st.step?"done":i+1===st.step?"cur":""}">${i+1<st.step?"✓ ":""}${i+1}. ${t}</span>`).join("")}</div>
+    <div class="steps">${steps.map((t,i)=>`<span class="${i<st.step?"done":i===st.step?"cur":""}">${i<st.step?"✓ ":""}${i+1}. ${t}${i===0&&st.user&&st.step>0?" · "+esc(st.user.first||"signed in"):i===0&&!st.user&&st.step>0?" · guest":""}</span>`).join("")}</div>
     <div class="co-grid"><div>${body}</div>${summary()}</div></section>`;
+}
+
+/* ---------- Account pages (demo: stored in this browser only) ---------- */
+const UK="antons-user-v1";
+function saveUser(){try{st.user?localStorage.setItem(UK,JSON.stringify(st.user)):localStorage.removeItem(UK)}catch(e){}}
+function signIn(u){st.user=u;saveUser();["email","first","last","phone","addr","apt","city","zip","country"].forEach(k=>{if(u[k]!==undefined)st.form[k]=u[k]})}
+function viewAccount(){
+  if(st.user){const u=st.user;
+    return `<section class="wrap acc-page">
+      <div class="acc-head"><div><span class="mono muted">My account</span><h1>Hi, ${esc(u.first||"there")}.</h1></div><button class="btn" data-signout>Sign out</button></div>
+      ${note(14,"<strong>My account.</strong> What customers expect after signing in: past orders with their status, the saved address used at checkout, and their email preferences. Place a demo order while signed in and it shows up here.","mb")}
+      <div class="acc-grid">
+        <div class="acard"><b>Orders</b>${u.orders&&u.orders.length?u.orders.map(o=>`<div class="ord"><div><span class="mono">${o.no}</span><span class="small">${o.date} · ${o.items.reduce((a,b)=>a+b.qty,0)} items</span></div><div class="right"><span class="mono">${eur(o.total)}</span><span class="pill">Preparing</span></div></div>`).join(""):`<span class="muted">No orders yet. Your orders and their delivery status will appear here.</span><button class="btn" data-go="shop">Go to the shop</button>`}</div>
+        <div class="acard"><b>Saved address</b><span>${esc(u.first)} ${esc(u.last)}<br>${u.addr?esc(u.addr)+(u.apt?", "+esc(u.apt):"")+"<br>"+esc(u.city)+" "+esc(u.zip)+"<br>"+esc(u.country):"<span class='muted'>No address yet. It is saved after your first order.</span>"}</span></div>
+        <div class="acard"><b>Details and preferences</b><span>${esc(u.email)}<br>${u.phone?esc(u.phone):"<span class='muted'>No phone saved</span>"}</span><span class="small">Newsletter: ${u.mkt?"subscribed":"not subscribed"}</span></div>
+      </div></section>`;
+  }
+  const tab=st.acc||"signin";
+  const tabs=`<div class="tabs"><button data-acc="signin" aria-pressed="${tab==="signin"}">Sign in</button><button data-acc="create" aria-pressed="${tab==="create"}">Create account</button></div>`;
+  let b="";
+  if(tab==="signin")b=`${tabs}<form id="accSignin" novalidate class="acc-form">
+      ${fld("siEmail","Email",{type:"email",rule:"email",ac:"email",full:1,val:""})}
+      ${fld("siPass","Password",{type:"password",rule:"pass",ac:"current-password",full:1,val:""})}
+      <div class="fhead"><label class="check" style="margin:0"><input type="checkbox" checked> Keep me signed in</label><button type="button" class="link" data-acc="forgot">Forgot password?</button></div>
+      <button class="btn solid wide">Sign in</button>
+      <div class="or"><span>or</span></div>
+      <div class="social"><button type="button" class="btn" data-social="Google">Continue with Google</button><button type="button" class="btn" data-social="Apple">Continue with Apple</button></div>
+    </form>
+    ${note(12,"<strong>Sign in.</strong> Email and password, plus one-tap Google or Apple sign-in, which most shoppers prefer on a phone. Errors show under each field. In this demo any email and an 8-character password work.","mt")}`;
+  if(tab==="create")b=`${tabs}<form id="accCreate" novalidate class="acc-form"><div class="fgrid">
+      ${fld("caFirst","First name",{ac:"given-name",val:""})}
+      ${fld("caLast","Last name",{ac:"family-name",val:""})}
+      ${fld("caEmail","Email",{type:"email",rule:"email",ac:"email",full:1,val:""})}
+      ${fld("caPhone","Phone",{type:"tel",rule:"phone",opt:1,ac:"tel",full:1,val:"",hint:"For delivery SMS only."})}
+      ${fld("caPass","Password",{type:"password",rule:"pass",ac:"new-password",full:1,val:"",hint:"At least 8 characters."})}
+      </div>
+      <label class="check"><input type="checkbox" id="caMkt"> <span>Email me about new scents and restocks. <span class="opt-tag">optional</span></span></label>
+      <label class="check"><input type="checkbox" id="caTerms" data-rule="terms"> <span>I agree to the <u>terms</u> and <u>privacy policy</u>.<span class="err" aria-live="polite"></span></span></label>
+      <button class="btn solid wide">Create account</button>
+      <div class="or"><span>or</span></div>
+      <div class="social"><button type="button" class="btn" data-social="Google">Sign up with Google</button><button type="button" class="btn" data-social="Apple">Sign up with Apple</button></div>
+    </form>
+    ${note(13,"<strong>Create account.</strong> Only what is needed: name, email and a password. Phone and newsletter are optional, and the terms box is required. A welcome email would be sent automatically.","mt")}`;
+  if(tab==="forgot")b=`<form id="accForgot" novalidate class="acc-form"><h2 style="font-weight:400;font-size:34px;margin:0">Reset your password</h2><p class="muted" style="margin:0">Enter your email and we will send you a link to choose a new password.</p>
+      ${fld("fpEmail","Email",{type:"email",rule:"email",ac:"email",full:1,val:""})}
+      <button class="btn solid wide">Send reset link</button><button type="button" class="link" data-acc="signin">← Back to sign in</button></form>
+    ${note("12b","<strong>Forgot password.</strong> The standard reset flow: the customer gets an email with a one-time link. Nothing is sent in this demo.","mt")}`;
+  if(tab==="sent")b=`<div class="acc-form"><h2 style="font-weight:400;font-size:34px;margin:0">Check your inbox</h2><p class="muted" style="margin:0">If an account exists for ${esc(st.fpEmail||"that email")}, a reset link is on its way. It works for 1 hour.</p><button class="btn wide" data-acc="signin">Back to sign in</button></div>`;
+  return `<section class="wrap acc-page"><div class="acc-head"><div><span class="mono muted">Account</span><h1>${tab==="create"?"Create your account":tab==="signin"?"Welcome back":"Password help"}</h1></div></div>
+    ${st.accFrom==="checkout"?`<p class="small">You will go straight back to checkout afterwards. <button class="link" data-backco>Or continue as guest</button></p>`:""}
+    ${b}</section>`;
 }
 function viewDone(){
   const o=st.order;
@@ -735,6 +868,9 @@ function viewDone(){
       <div><span class="mono">Tomorrow</span><span>Packed and shipped, tracking link by SMS</span></div>
       <div><span class="mono">1–2 days</span><span>Delivered. Your free sample is in the box.</span></div>
     </div>
+    ${o.guest&&!st.user?`<form id="saveAcc" class="acard" novalidate style="margin-bottom:24px"><b>Save your details for next time?</b><span class="muted">Create an account with ${esc(o.email)}. Just choose a password: your address and this order are saved.</span>
+      ${fld("svPass","Password",{type:"password",rule:"pass",ac:"new-password",full:1,val:"",hint:"At least 8 characters."})}<button class="btn solid">Create account</button>
+      ${note("12c","<strong>Account after a guest order.</strong> Guests are offered an account <em>after</em> paying, when it costs them only a password. This converts far better than asking before checkout.")}</form>`:st.user?`<p class="small" style="margin-bottom:20px">Saved to your account. <button class="link" data-go="account">See My account →</button></p>`:""}
     <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn solid" data-go="home">Back to the store</button><button class="btn" data-restart>Run the demo again</button></div>
   </section>`;
 }
@@ -746,7 +882,7 @@ function render(){
   R.style.removeProperty("--hdr-bg");R.style.removeProperty("--hdr-fg");
   document.querySelectorAll(".switch [data-dir]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.dir===st.dir));
   header();
-  const v={home:viewHome,shop:viewShop,product:viewProduct,checkout:viewCheckout,done:viewDone}[st.view];
+  const v={home:viewHome,shop:viewShop,product:viewProduct,checkout:viewCheckout,done:viewDone,account:viewAccount}[st.view];
   $("#main").innerHTML=v();
   cancelAnimationFrame(raf);clearInterval(bTimer);if(io)io.disconnect();
   if($("#smoke"))startB();
@@ -800,14 +936,13 @@ function openBag(){
 }
 function closeBag(){$("#scrim").classList.remove("on");const d=$("#bagDrawer");d.classList.remove("on");d.setAttribute("aria-hidden","true")}
 let tt;function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("on"),2400)}
-function readForm(){["email","first","last","phone","addr","city","zip","country"].forEach(k=>{const el=document.getElementById(k);if(el)st.form[k]=el.value.trim()})}
 
 /* ---------- Events ---------- */
 document.addEventListener("click",e=>{
   const t=e.target.closest("button,a");if(!t)return;const d=t.dataset;
   if(d.dir){st.dir=d.dir;history.replaceState(null,"","#"+st.dir);render();return}
   if(t.id==="guideBtn"){const on=document.documentElement.dataset.guide!=="on";document.documentElement.dataset.guide=on?"on":"off";t.setAttribute("aria-pressed",on);return}
-  if(d.go){closeBag();if(d.go==="shop"&&st.view!=="shop")st.fam="All";go(d.go);return}
+  if(d.go){closeBag();if(d.go==="shop"&&st.view!=="shop")st.fam="All";if(d.go==="account"){st.acc="signin";st.accFrom=null}go(d.go);return}
   if(d.gotoDisc!==undefined){if(st.view!=="home")go("home");setTimeout(()=>$("#discovery")?.scrollIntoView({behavior:"smooth"}),30);return}
   if(d.pid){go("product",{pid:+d.pid,size:50,qty:1});return}
   if(d.fam){st.fam=d.fam;const y=scrollY;render();scrollTo({top:y});return}
@@ -819,14 +954,20 @@ document.addEventListener("click",e=>{
   if(d.bq){const it=st.bag[+d.bq];it.qty+= +d.d;if(it.qty<1)st.bag.splice(+d.bq,1);updateBagN();openBag();if(st.view==="checkout"){if(!st.bag.length){closeBag();go("shop")}else render()}return}
   if(t.id==="bagBtn"||d.openBag!==undefined){openBag();return}
   if(d.close!==undefined){closeBag();return}
-  if(d.checkout!==undefined){closeBag();go("checkout",{step:1});return}
-  if(d.step){st.step=+d.step;render();scrollTo({top:0});return}
+  if(d.checkout!==undefined){closeBag();go("checkout",{step:st.user?1:0});return}
+  if(d.step){if(st.step===1)readForm();st.step=+d.step;render();scrollTo({top:0});return}
   if(d.free){st.sample=+d.free;readForm();const y=scrollY;render();scrollTo({top:y});return}
   if(d.express){
     if(st.view==="product"){const s=S[st.pid-1];addToBag({key:`${s.id}-${st.size}`,title:`No. ${s.no} ${s.name}`,sub:`Eau de parfum · ${st.size} ml`,price:st.size===50?s.p50:s.p100,qty:st.qty,c:s.c})}
-    if(!st.bag.length)return;closeBag();st.pay=d.express;openPay(d.express,true);return}
+    if(!st.bag.length)return;closeBag();if(!st.form.first)Object.assign(st.form,DEMO);st.pay=d.express;openPay(d.express,true);return}
   if(d.quiz!==undefined){openQuiz();return}
-  if(d.restart!==undefined){st.bag=[];st.sample=null;st.order=null;st.step=1;go("home");return}
+  if(d.acc){if(d.from)st.accFrom=d.from;st.acc=d.acc;if(st.view!=="account")go("account");else{render();scrollTo({top:0})}return}
+  if(d.guest!==undefined){st.step=1;render();scrollTo({top:0});return}
+  if(d.backco!==undefined){st.accFrom=null;go("checkout",{step:1});return}
+  if(d.demo!==undefined){Object.assign(st.form,DEMO);const y=scrollY;render();scrollTo({top:y});return}
+  if(d.social){signIn({...DEMO,email:"anna@example.com",orders:(st.user&&st.user.orders)||[],mkt:false});toast("Signed in with "+d.social+" (demo)");if(st.accFrom==="checkout"){st.accFrom=null;go("checkout",{step:1})}else go("account");return}
+  if(d.signout!==undefined){st.user=null;saveUser();Object.assign(st.form,{email:"",first:"",last:"",phone:"",addr:"",apt:"",city:"",zip:"",country:"Latvia",mkt:false});toast("Signed out");st.acc="signin";render();return}
+  if(d.restart!==undefined){st.bag=[];st.sample=null;st.order=null;st.step=0;go("home");return}
 });
 document.addEventListener("change",e=>{
   if(e.target.id==="sortSel"){st.sort=e.target.value;render();return}
@@ -837,17 +978,27 @@ document.addEventListener("change",e=>{
 document.addEventListener("submit",e=>{
   e.preventDefault();
   if(e.target.id==="newsForm"){toast("Demo: you would now get a welcome email");e.target.reset();return}
-  if(e.target.id!=="coForm")return;
-  if(st.step===1){readForm();st.step=2;render();scrollTo({top:0});return}
+  const F=e.target;
+  if(F.id==="coSignin"||F.id==="accSignin"){if(!validate(F))return;const em=F.querySelector('[name="siEmail"]').value.trim();
+    let u=null;try{const sv=JSON.parse(localStorage.getItem(UK+"-last")||"null");if(sv&&sv.email===em)u=sv}catch(x){}
+    signIn(u||{...DEMO,email:em,orders:[],mkt:false});toast("Signed in as "+em);
+    if(F.id==="coSignin"||st.accFrom==="checkout"){st.accFrom=null;go("checkout",{step:1})}else go("account");return}
+  if(F.id==="accCreate"){if(!validate(F))return;const g=id=>F.querySelector("#"+id).value.trim();
+    signIn({email:g("caEmail"),first:g("caFirst"),last:g("caLast"),phone:g("caPhone"),addr:"",apt:"",city:"",zip:"",country:"Latvia",mkt:F.querySelector("#caMkt").checked,orders:[]});
+    toast("Account created. Welcome, "+g("caFirst")+"!");if(st.accFrom==="checkout"){st.accFrom=null;go("checkout",{step:1})}else go("account");return}
+  if(F.id==="accForgot"){if(!validate(F))return;st.fpEmail=F.querySelector("#fpEmail").value.trim();st.acc="sent";render();return}
+  if(F.id==="saveAcc"){if(!validate(F))return;const o=st.order;signIn({...st.form,orders:[{no:o.no,date:o.date,items:o.items,total:o.total}]});toast("Account created. Your order is saved under My account.");render();return}
+  if(F.id!=="coForm")return;
+  if(st.step===1){if(!validate(F))return;readForm();if(st.user){Object.assign(st.user,{...st.form,orders:st.user.orders});saveUser()}st.step=2;render();scrollTo({top:0});return}
   if(st.step===2){const gm=$("#giftMsg");if(gm)st.giftMsg=gm.value;st.step=3;render();scrollTo({top:0});return}
-  if(st.step===3){if(!$("#terms").checked){toast("Please accept the terms to place the order");return}
-    openPay(st.pay)}
+  if(st.step===3){if(!validate(F))return;openPay(st.pay)}
 });
 /* ---------- Payment provider screen (demo) ----------
    In the live shop this screen belongs to the payment provider (e.g. Stripe or PayPal). */
 let payExpress=false;
 function placeOrder(){
-  st.order={no:"ANT-"+(10400+Math.floor(Math.random()*500)),first:st.form.first,email:st.form.email,items:st.bag.map(b=>({...b})),sample:st.sample,ship:st.ship,pay:st.pay,total:total(),addr:`${st.form.addr}, ${st.form.city}`,gift:st.gift,giftMsg:st.giftMsg};
+  st.order={no:"ANT-"+(10400+Math.floor(Math.random()*500)),first:st.form.first,email:st.form.email,items:st.bag.map(b=>({...b})),sample:st.sample,ship:st.ship,pay:st.pay,total:total(),addr:`${st.form.addr}, ${st.form.city}`,gift:st.gift,giftMsg:st.giftMsg,date:new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}),guest:!st.user};
+  if(st.user){st.user.orders=[{no:st.order.no,date:st.order.date,items:st.order.items,total:st.order.total},...(st.user.orders||[])];saveUser();try{localStorage.setItem(UK+"-last",JSON.stringify(st.user))}catch(x){}}
   st.bag=[];st.gift=false;st.giftMsg="";closePay();go("done");
 }
 function closePay(){$("#payov").classList.remove("on")}
@@ -923,8 +1074,8 @@ function drawQuiz(){
 const CK="antons-comments-v1";
 let comments=[];try{comments=JSON.parse(localStorage.getItem(CK)||"[]")}catch(e){comments=[]}
 const saveC=()=>{try{localStorage.setItem(CK,JSON.stringify(comments))}catch(e){}};
-const VNAME={home:"Landing page",shop:"Shop",product:"Product page",checkout:"Checkout",done:"Order confirmation"};
-const where=c=>`${VNAME[c.view]||c.view}${c.view==="product"?" (No. "+S[c.pid-1].no+")":""}${c.view==="checkout"?" step "+c.step:""} · look ${c.dir.toUpperCase()}`;
+const VNAME={home:"Landing page",shop:"Shop",product:"Product page",checkout:"Checkout",done:"Order confirmation",account:"Account"};
+const where=c=>`${VNAME[c.view]||c.view}${c.view==="product"?" (No. "+S[c.pid-1].no+")":""}${c.view==="checkout"?" step "+(c.step+1):""} · look ${c.dir.toUpperCase()}`;
 const ctxMatch=c=>c.view===st.view&&c.dir===st.dir&&(c.view!=="product"||c.pid===st.pid)&&(c.view!=="checkout"||c.step===st.step);
 let cmode=false;
 function setCmode(on){cmode=on;document.documentElement.dataset.cmode=on?"on":"off";$("#cBtn").setAttribute("aria-pressed",on);closePop()}
@@ -996,6 +1147,7 @@ document.addEventListener("pointerover",e=>{
 });
 addEventListener("hashchange",()=>{const h=location.hash.slice(1);if(["a","b","c"].includes(h)&&h!==st.dir){st.dir=h;render()}});
 const h0=location.hash.slice(1);if(["a","b","c"].includes(h0))st.dir=h0;
+try{const u=JSON.parse(localStorage.getItem(UK)||"null");if(u)signIn(u)}catch(e){}
 document.documentElement.dataset.guide="on";
 render();
 </script>

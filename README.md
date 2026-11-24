@@ -8,9 +8,11 @@ A clickable mockup of a small perfume e-shop (19 scents), made to show the clien
 2. **Shop**: all 19 scents, filter by family (Fresh, Floral, Woody, Amber), sort by price.
 3. **Product page**: notes (top / heart / base), choose 50 or 100 ml, choose quantity, add to bag, express pay, "try it first" 2 ml sample.
 4. **Bag**: change quantities, free-delivery progress bar, checkout.
-5. **Checkout**: 1 Details (guest, free sample pick) → 2 Delivery → 3 Payment.
+5. **Checkout**: 1 Account (sign in, create account or continue as guest) → 2 Details (email, name, address; phone optional; newsletter opt-in; every field validated) → 3 Delivery (+ gift wrap) → 4 Payment (terms required).
 6. **Payment screen** (demo of the provider's page): card with 3-D Secure, Apple Pay, PayPal or bank link → processing → payment successful. Express Apple Pay / PayPal on the product page and bag skip the checkout form.
 7. **Order confirmation**: order number, summary, what happens next.
+
+**Account pages**: sign in (email or Google / Apple), create account, forgot password, My account (orders, saved address, preferences). Guests are offered an account after paying. Demo only: stored in the browser.
 
 Extras: **scent finder quiz** (3 questions → 2 suggestions → add both as samples) and **gift wrap + handwritten card** at checkout.
 
